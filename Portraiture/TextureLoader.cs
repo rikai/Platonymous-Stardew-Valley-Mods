@@ -222,8 +222,11 @@ namespace Portraiture
 
 
                     ScaledTexture2D scaled;
-                    
-                        scaled = ScaledTexture2D.FromTexture(Game1.getCharacterFromName(name).Portrait, texture, scale);
+
+                        var npc = Game1.getCharacterFromName(name);
+                        if (npc == null)
+                            continue;
+                        scaled = ScaledTexture2D.FromTexture(npc.Portrait, texture, scale);
                    
                     if (!pTextures.ContainsKey(folderName + ">" + name))
                         pTextures.Add(folderName + ">" + name, scaled);
